@@ -1,0 +1,6 @@
+*nc
+*grib
+__pycache__
+.env
+env
+docs/logs
