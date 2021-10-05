@@ -4,7 +4,7 @@ import cdsapi
 import datetime
 
 
-def download_era5_pl(bbox, t0):
+def download_era5_pl(jdata, t0):
     """
     Download era5 data pressure levels (3D)
     """
@@ -65,7 +65,7 @@ def download_era5_pl(bbox, t0):
             "month": t0.month,
             "day": t0.day,
             #'area'          : [32, 20, 45, 30], # North, West, South, East. Default: global
-            "area": bbox,  # North, West, South, East. Default: global
+            "area": jdata["bbox"],  # North, West, South, East. Default: global
             "grid": [
                 1.0,
                 1.0,
@@ -96,13 +96,13 @@ def download_era5_pl(bbox, t0):
                 "22:00",
                 "23:00",
             ],
-            "format": "grib"  # Supported format: grib and netcdf. Default: grib
+            "format": jdata["format"],  # Supported format: grib and netcdf. Default: grib
         },
         "data/era5_"+date0+"_1h_pl.grib",
     )
 
 
-def download_era5_sl(bbox, t0):
+def download_era5_sl(jdata, t0):
     """
     Download era5 data single levels (surface)
     """
@@ -125,7 +125,7 @@ def download_era5_sl(bbox, t0):
             "month": t0.month,
             "day": t0.day,
             #'area'          : [32, 20, 45, 30], # North, West, South, East. Default: global
-            "area": bbox,  # North, West, South, East. Default: global
+            "area": jdata["bbox"],  # North, West, South, East. Default: global
             "grid": [
                 1.0,
                 1.0,
@@ -156,7 +156,7 @@ def download_era5_sl(bbox, t0):
                 "22:00",
                 "23:00",
             ],
-            "format": "grib",  # Supported format: grib and netcdf. Default: grib
+            "format": jdata["format"],  # Supported format: grib and netcdf. Default: grib
         },
         "data/era5_"+date0+"_1h_sl.grib",
     )
