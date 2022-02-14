@@ -7,7 +7,7 @@ import datetime
 import json
 import sys
 
-from src.utils import download_era5_pl, download_era5_sl
+from src.utils import download_era5_pl, download_era5_sl, download_example
 
 
 parser = argparse.ArgumentParser()
@@ -21,8 +21,12 @@ if jdata["format"] != "netcdf" and jdata["format"] != "grib":
     print("format must be netcdf or grib")
     sys.exit()
 
+
 t0 = datetime.datetime.strptime(jdata["t0"], "%Y-%m-%d") 
 tf = datetime.datetime.strptime(jdata["tf"], "%Y-%m-%d") 
+
+#download_example()
+#sys.exit()
 
 while t0 <= tf:
 #    download_era5_pl(jdata, t0)

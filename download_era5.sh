@@ -1,21 +1,11 @@
 #!/bin/bash
-
-while [ $# -gt 0 ] ; do
-  case $1 in
-    -j | --json) export json=${2};;
-  esac
-  shift
-done
-
-if [ -z "${json+xxx}" ]
-then
-    echo "Error! Undefined JSON."
-    exit
-fi
+#PBS -l nodes=1:ppn=1
+#PBS -q high
 
 
-#cd ${HOME}/Projects/download_era5
 
+pwd=/BGFS/DISASTER/garcgui/download_era5
+cd $pwd
 
 # Run python
-env/bin/python ./main.py --json ${json}
+env/bin/python ./main.py --json data/data_schism.json
